@@ -6,20 +6,13 @@ metadata:
   name: frontend-svc
 
 spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: frontend
   selector:
     app: todo
     component: frontend
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      name: frontend
-  clusterIP: 10.96.171.239
   type: LoadBalancer
 
-status:
-  loadBalancer:
-    ingress:
-    - ip: 192.0.2.127
-  
 

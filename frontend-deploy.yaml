@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployement
+metadata:
+  name: frontend-deployement
+  labels:
+    component: frontend
+    app: todo
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        component: frontend
+        app: todo
+  containers:
+  - name: frontend
+    image: icclabcna/ccp2-k8s-todo-frontend
+    ports:
+    - containerPort: 8080
+    env:
+    - name: API_ENDPOINT_URL
+      value: http://api-svc:8081
